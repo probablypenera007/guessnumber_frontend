@@ -1,8 +1,5 @@
 .App {
-  text-align: center;
-}
-
-.App-header {
+  position : relative;
   background-color: #0e1421;
   min-height: 100vh;
   display: flex;
@@ -11,4 +8,5 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin: 0 auto;
 }
