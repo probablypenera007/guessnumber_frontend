@@ -1,0 +1,72 @@
+.playerInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.playerInput__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.playerInput__points{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.playerInput__points_down{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.playerInput__points_input{
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+.playerInput__points_up{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.playerInput__multiplier{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.playerInput__multiplier_down{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.playerInput__multiplier_input{
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+.playerInput__multipilier_up{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}

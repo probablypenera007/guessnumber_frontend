@@ -1,12 +1,14 @@
 import React from 'react';
-import './App.css';
+
 import PlayerInput from '../PlayerInput/PlayerInput';
 
+//Internal imports
+import Style from './App.module.css';
 
 
 function App() {
   return (
-    <div className="App">
+    <div className={Style.App}>
      <PlayerInput/>
     </div>
   );
