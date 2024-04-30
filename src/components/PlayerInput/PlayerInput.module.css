@@ -3,7 +3,10 @@
     justify-content: center;
     margin-top: 20px;
     flex-direction: column; 
-    
+    /* background-color: #0e1421; */
+    max-width: 500px;
+    padding: 0;
+    margin: 0;
 }
 
 .playerInput__container{
