@@ -1,8 +1,11 @@
 import React from 'react'
 
+//Internal imports
+import Style from './PlayerInput.module.css'
+
 const PlayerInput = () => {
   return (
-    <div>
+    <div className={Style.playerInput} >
       player input
     </div>
   )
