@@ -58,8 +58,8 @@
     background-color: black;
     color: white;
     border: none; 
-    padding: 1px;   
-    padding-left: 10px;
+    padding: 1px 10px 1px 10px;   
+    /* padding-left: 10px; */
 }
 
 .playerInput__points_up{
@@ -112,7 +112,8 @@
     background-color: black;
     color: white;
     border: none;   
-    padding-left: 10px;
+    /* padding-left: 10px; */
+    padding: 1px 10px 1px 10px;
 }
 
 .playerInput__multipilier_up{
@@ -122,6 +123,46 @@
     margin-top: 20px;
     background: linear-gradient(180deg, #2B2B2B 0%, #1E1E1E 100%);
     cursor: pointer;
+    border-radius: 5px;
+}
+
+
+
+/*INFO PANEL*/
+
+.playerInput__infoPanel{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    /* background-color: blue; */
+    /* padding: 20px 10px 10px 10px; */
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.playerInput__totalPoints{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    background: linear-gradient(180deg, #2B2B2B 0%, #1E1E1E 100%);
+    border-radius: 5px;
+    flex-direction: row;
+    padding-right: 20px
+}
+
+.playerInput__name{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    background: linear-gradient(180deg, #2B2B2B 0%, #1E1E1E 100%);
+    border-radius: 5px;
+}
+
+.playerInput__timer{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    background: linear-gradient(180deg, #2B2B2B 0%, #1E1E1E 100%);
     border-radius: 5px;
 }
 

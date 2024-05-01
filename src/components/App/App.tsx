@@ -6,10 +6,16 @@ import PlayerInput from '../PlayerInput/PlayerInput';
 import Style from './App.module.css';
 
 
+const handleSubmit = (points: number, multiplier: number) => {
+  console.log("Points:", points, "Multiplier:", multiplier);
+};
+
 function App() {
   return (
     <div className={Style.App}>
-     <PlayerInput/>
+     <PlayerInput
+     onSubmit={handleSubmit}
+     />
     </div>
   );
 }
