@@ -92,7 +92,7 @@ const PlayerInput: React.FC<PlayerInputProps> = ({ onSubmit }) => {
             type="number"
             value={multiplier.toFixed(2)}
             className={Style.playerInput__multiplier_input}
-            readOnly
+            // readOnly
           />
           <button
             className={Style.playerInput__multipilier_up}
