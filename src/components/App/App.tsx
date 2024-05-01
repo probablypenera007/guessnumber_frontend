@@ -15,6 +15,7 @@ import { generateInitialCPUPlayers, startGame } from "../../utils/cpuPlayers";
 
 //Internal imports
 import Style from "./App.module.css";
+import GameBoard from "../GameBoard/GameBoard";
 
 
 function App() {
@@ -35,9 +36,11 @@ function App() {
   return (
     <div className={Style.App}>
       <PlayerInput onStartGame={handleStartGame}/>
+      <GameBoard speed={speed}/>
       <CurrentRound
         players={cpuPlayers} gameStarted={gameStarted}
       />
+   
       <SpeedSlider speed={speed} setSpeed={setSpeed} />
     </div>
   );

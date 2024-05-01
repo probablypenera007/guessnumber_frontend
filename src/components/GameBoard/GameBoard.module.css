@@ -1,0 +1,24 @@
+.gameBoard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin: 20px auto;
+    width: 656px;
+    height: 600px;
+    background-color: #555;
+    border-radius: 10px;
+    padding: 10px;
+    position: absolute;
+    top: 8%;
+    left: 28%;
+    right: 23%;
+    bottom: 10%;
+}
+
+.graph__multiplier{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 169px -152px 1px 1px;
+}
