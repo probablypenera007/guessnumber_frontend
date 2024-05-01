@@ -1,3 +1,41 @@
-.currentRound{
+.currentRound {
     color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.currentRound__title {
+    margin-bottom: 20px;
+}
+
+.currentRound__table {
+    margin-left: 20px;
+    width: 23%;
+    border-collapse: collapse;
+}
+
+.table__row--you {
+    background-color: #ccc;
+}
+
+.table__row--cpu1,
+.table__row--cpu3 {
+    background-color: #888;
+}
+
+.table__row--cpu2,
+.table__row--cpu4 {
+    background-color: #666;
+}
+
+.tableH {
+    padding: 10px;
+    text-align: left;
+}
+
+.table__data {
+    padding: 10px;
+    border-top: 1px solid #555;
 }
