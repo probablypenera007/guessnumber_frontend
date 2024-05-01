@@ -101,20 +101,22 @@ const PlayerInput: React.FC<PlayerInputProps> = ({ onSubmit }) => {
             <TiArrowSortedUp className={Style.icon} />
           </button>
         </div>
+
+        {/* INFO PANEL */}
         <div className={Style.playerInput__infoPanel}>
           <div className={Style.playerInput__totalPoints}>
-            Total Points: {totalPoints}
+            icon: {totalPoints}
           </div>
-          <div className={Style.playerInput__name}>Player: {playerName}</div>
+          <div className={Style.playerInput__name}>icon: {playerName}</div>
           <div className={Style.playerInput__timer}>
-            Time Left: {formatTime()}
+            icon {formatTime()}
           </div>
         
         </div>
       </div>
 
       <button className={Style.playerInput__submit} onClick={handleSubmit}>
-        START
+        Start
       </button>
     </div>
   );
