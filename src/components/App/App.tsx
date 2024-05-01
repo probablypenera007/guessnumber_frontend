@@ -20,6 +20,7 @@ import Style from "./App.module.css";
 function App() {
   const [cpuPlayers, setCpuPlayers] = useState(generateInitialCPUPlayers());
   const [gameStarted, setGameStarted] = useState(false);
+  const [speed, setSpeed] = useState(1);
 
   const handleStartGame =  (points: number, multiplier: number) => {
     setGameStarted(true);
@@ -37,7 +38,7 @@ function App() {
       <CurrentRound
         players={cpuPlayers} gameStarted={gameStarted}
       />
-      <SpeedSlider />
+      <SpeedSlider speed={speed} setSpeed={setSpeed} />
     </div>
   );
 }
