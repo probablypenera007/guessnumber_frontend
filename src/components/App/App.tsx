@@ -2,6 +2,7 @@ import React from 'react';
 
 import PlayerInput from '../PlayerInput/PlayerInput';
 import CurrentRound from '../CurrentRound/CurrentRound';
+import SpeedSlider from '../SpeedSlider/SpeedSlider';
 
 //Internal imports
 import Style from './App.module.css';
@@ -19,6 +20,7 @@ function App() {
      onSubmit={handleSubmit}
      />
      <CurrentRound/>
+     <SpeedSlider/>
     </div>
   );
 }
