@@ -1,10 +1,11 @@
 import React from 'react';
 
 import PlayerInput from '../PlayerInput/PlayerInput';
-
+import CurrentRound from '../CurrentRound/CurrentRound';
 
 //Internal imports
 import Style from './App.module.css';
+
 
 
 const handleSubmit = (points: number, multiplier: number) => {
@@ -17,6 +18,7 @@ function App() {
      <PlayerInput
      onSubmit={handleSubmit}
      />
+     <CurrentRound/>
     </div>
   );
 }
