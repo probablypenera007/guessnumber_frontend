@@ -5,7 +5,7 @@ import Style from './CurrentRound.module.css'
 
 const CurrentRound = () => {
   return (
-    <div>CurrentRound</div>
+    <div className={Style.currentRound}>CurrentRound</div>
   )
 }
 
