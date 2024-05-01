@@ -5,6 +5,7 @@ interface CPUPlayer {
 }
 
 export const generateInitialCPUPlayers = (): CPUPlayer[] => [
+    {name: "You", points: 0, multiplier: 1},
     { name: "CPU 1", points: 0, multiplier: 0 },
     { name: "CPU 2", points: 0, multiplier: 0 },
     { name: "CPU 3", points: 0, multiplier: 0 },

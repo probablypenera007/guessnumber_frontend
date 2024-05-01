@@ -5,10 +5,10 @@ import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 import Style from "./PlayerInput.module.css";
 
 interface PlayerInputProps {
-  onSubmit: (points: number, multiplier: number) => void;
+  onStartGame: (points: number, multiplier: number) => void;
 }
 
-const PlayerInput: React.FC<PlayerInputProps> = ({ onSubmit }) => {
+const PlayerInput: React.FC<PlayerInputProps> = ({ onStartGame }) => {
   const [points, setPoints] = useState<number>(50);
   const [multiplier, setMultiplier] = useState<number>(1.0);
   const [totalPoints, setTotalPoints] = useState<number>(1000);
@@ -33,17 +33,18 @@ const PlayerInput: React.FC<PlayerInputProps> = ({ onSubmit }) => {
   };
 
   const handleMultiplierChange = (increment: boolean) => {
-    setMultiplier((prev) =>
-      increment
-        ? Math.round((prev + 0.1) * 100) / 100
-        : Math.round((prev - 0.1) * 100) / 100
-    );
+    setMultiplier((prev) => {
+      let newValue = increment ? prev + 0.25 : prev - 0.25;
+      if (newValue < 0.0) newValue = 0.0;
+      else if (newValue > 10.0) newValue = 10.0;
+      return Math.round(newValue * 100) / 100;
+    });
   };
 
   const handleSubmit = () => {
     if (totalPoints >= points) {
       setTotalPoints((prev) => prev - points);
-      onSubmit(points, multiplier);
+      onStartGame(points, multiplier);
     } else {
       alert("Not enough points");
     }
@@ -89,10 +90,12 @@ const PlayerInput: React.FC<PlayerInputProps> = ({ onSubmit }) => {
           </button>
           <p className={Style.playerInput__multiplier_text}>Multiplier</p>
           <input
-            type="number"
+            type="text"
             value={multiplier.toFixed(2)}
+            onChange={(e) => setMultiplier(parseFloat(e.target.value))}
             className={Style.playerInput__multiplier_input}
-            // readOnly
+            min="0.00"
+            max="10.00"
           />
           <button
             className={Style.playerInput__multipilier_up}
@@ -108,10 +111,7 @@ const PlayerInput: React.FC<PlayerInputProps> = ({ onSubmit }) => {
             icon: {totalPoints}
           </div>
           <div className={Style.playerInput__name}>icon: {playerName}</div>
-          <div className={Style.playerInput__timer}>
-            icon {formatTime()}
-          </div>
-        
+          <div className={Style.playerInput__timer}>icon {formatTime()}</div>
         </div>
       </div>
 

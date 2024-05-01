@@ -112,6 +112,7 @@
 }
 
 .playerInput__multiplier_input{
+    -webkit-appearance: none;
     display: flex;
     flex-direction: column;
     width: 50px;
@@ -120,7 +121,7 @@
     margin: 0 10px;
     background-color: black;
     border-radius: 10px;  
-    padding: 1px 1px 1px 10px;
+    padding: 1px 1px 1px 7px;
     font-size: 15px;
     font-weight: bold;
     color: white;
