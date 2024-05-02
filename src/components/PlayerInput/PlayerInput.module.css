@@ -204,3 +204,12 @@
     letter-spacing: 1px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+
+/* LOGO */
+.points_logo{
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    padding: 0;
+}

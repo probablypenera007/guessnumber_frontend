@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
+import Logo from "../../images/img-index";
 
 //Internal imports
 import Style from "./PlayerInput.module.css";
@@ -109,7 +110,7 @@ const PlayerInput: React.FC<PlayerInputProps> = ({ onStartGame, updateTotalPoint
         {/* INFO PANEL */}
         <div className={Style.playerInput__infoPanel}>
           <div className={Style.playerInput__totalPoints}>
-            icon: {totalPoints}
+          <img className={Style.points_logo} src={Logo.pointsLogo} alt="Points logo" /> {totalPoints}
           </div>
           <div className={Style.playerInput__name}>icon: {playerName}</div>
           <div className={Style.playerInput__timer}>icon {formatTime()}</div>
