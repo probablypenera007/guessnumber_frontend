@@ -118,7 +118,7 @@ const handleRegistration = (name: string) => {
       players={cpuPlayers}
       gameEnded={finalMultiplier > 0}
       />
-      <ChatBox/>
+      <ChatBox  />
     </div>
     </CurrentUserContext.Provider>
   );

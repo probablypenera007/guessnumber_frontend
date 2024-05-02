@@ -8,6 +8,12 @@ interface WelcomeModalProps {
 const WelcomeModal: React.FC<WelcomeModalProps> = ({ onAccept }) => {
   const [name, setName] = useState('');
 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter' && name.trim()) {
+      handleAccept();
+    }
+  };
+
   const handleAccept = () => {
     if (name.trim()) {
       onAccept(name);
@@ -23,6 +29,7 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ onAccept }) => {
       className={Style.welcome__input}
         type="text"
         value={name}
+        onKeyDown={handleKeyPress}
         onChange={(e) => setName(e.target.value)}
         placeholder="Your Name"
       />
