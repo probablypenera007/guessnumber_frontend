@@ -1,14 +1,14 @@
 .currentRound {
     color: white;
-    padding: 20px;
+    padding: 10px 20px 20px;
     border-radius: 8px;
     width: 100%;
     box-sizing: border-box;
 }
 
 .currentRound__title {
-    margin-bottom: 20px;
-    margin-right: 30px;
+    margin-bottom: 5px;
+    margin-left: 25px;
 }
 
 .currentRound__logo{
