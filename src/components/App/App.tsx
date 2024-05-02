@@ -27,6 +27,7 @@ function App() {
   const [speed, setSpeed] = useState(1);
   const [finalMultiplier, setFinalMultiplier] = useState(0);
   const [totalPoints, setTotalPoints] = useState(1000);
+  const [currentUser, setCurrentUser] = useState(null);
 
   const handleStartGame = useCallback((points: number, multiplier: number) => {
     setGameStarted(true);
@@ -69,6 +70,7 @@ function App() {
   }));
 }, [cpuPlayers, updateTotalPoints]);
 
+//LOGIN / Register
 
 
 
