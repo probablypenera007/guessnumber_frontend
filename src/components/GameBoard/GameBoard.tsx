@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 
@@ -15,14 +15,15 @@ interface GameBoardProps {
 const GameBoard: React.FC<GameBoardProps> = ({ speed, onGameEnd, gameStarted }) => {
   const pathRef = useRef<SVGPathElement | null>(null);
   const ballRef = useRef<SVGCircleElement | null>(null);
+  const [currentMultiplier, setCurrentMultiplier] = useState(0);
   const targetMultiplier = useRef<number>(Math.random() * 10);
 
   useEffect(() => {
     if (gameStarted) {
       const newTarget = parseFloat((Math.random() * 10).toFixed(2));
       targetMultiplier.current = newTarget;
+      setCurrentMultiplier(0); // Reset the multiplier display at start
 
-     
       if (pathRef.current && ballRef.current) {
         // Set initial state with GSAP
         gsap.set(ballRef.current, {
@@ -38,10 +39,15 @@ const GameBoard: React.FC<GameBoardProps> = ({ speed, onGameEnd, gameStarted }) 
           motionPath: {
             path: pathRef.current,
             start: 0,
-            end: 1
+            end: (targetMultiplier.current / 10)
           },
           duration: speed,
           ease: 'none',
+          onUpdate: () => {
+            const pathProperties = gsap.getProperty(ballRef.current, "motionPath") as any; // Cast as any to access custom properties
+            const progress = pathProperties.end * 10;
+            setCurrentMultiplier(progress);
+          },
           onComplete: () => onGameEnd(targetMultiplier.current)
         });
       }
@@ -50,17 +56,18 @@ const GameBoard: React.FC<GameBoardProps> = ({ speed, onGameEnd, gameStarted }) 
 
   return (
     <div className={Style.gameBoard}>
+      <h1 className={Style.graph__multiplier} >{currentMultiplier.toFixed(2)}x</h1>
       <svg width="100%" height="200" viewBox="0 0 100 100">
         <path
           ref={pathRef}
-          d={`M10,${100 - targetMultiplier.current * 9} L90,${100 - targetMultiplier.current * 9}`}
+          d="M01,90 L90,90"
           fill="transparent"
           stroke="rgb(255, 99, 132)"
           strokeWidth="2"
         />
-        <circle ref={ballRef} cx="0" cy="0" r="3" fill="yellow" />
+        <circle ref={ballRef} cx="10" cy="90" r="3" fill="yellow" />
       </svg>
-      <div>Target Multiplier: {targetMultiplier.current.toFixed(2)}</div>
+      
     </div>
   );
 };
