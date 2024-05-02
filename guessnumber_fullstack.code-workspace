@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../guessnumber_backend"
+		}
+	],
+	"settings": {}
+}
