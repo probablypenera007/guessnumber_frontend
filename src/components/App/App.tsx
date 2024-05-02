@@ -64,8 +64,8 @@ function App() {
 
   setCpuPlayers(cpuPlayers.map((player, index) => {
     const updatedPoints = index === indexLoser ? 0 : player.points * multiplier;
-    if (player.name === "Thomas") { // Assuming "Thomas" is the player's name
-      updateTotalPoints(updatedPoints - player.points); // Subtract original and add new points
+    if (player.name === "Thomas") {
+      updateTotalPoints(updatedPoints - player.points); 
     }
     return {
       ...player,
@@ -92,7 +92,10 @@ function App() {
       />
    
       <SpeedSlider speed={speed} setSpeed={setSpeed} />
-      <Ranking/>
+      <Ranking 
+      players={cpuPlayers}
+      gameEnded={finalMultiplier > 0}
+      />
       <ChatBox/>
     </div>
   );

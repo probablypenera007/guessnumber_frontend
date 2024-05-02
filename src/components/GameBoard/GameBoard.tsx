@@ -46,7 +46,7 @@ const GameBoard: React.FC<GameBoardProps> = ({ speed, onGameEnd, gameStarted }) 
           }
           return next;
         });
-      }, 100 / speed);
+      }, 50 / speed);
     }
 
     return () => {
