@@ -52,3 +52,10 @@
   background-color: #1a222b;
   border-radius: 20px;
 }
+
+.ranking__logo{
+  height: 20px;
+  width: 15px;
+  margin: 0 10px 0 0;
+  padding: 0;
+}

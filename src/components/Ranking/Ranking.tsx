@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from "../../images/img-index";
 
 //internal imports
 import Style from "./Ranking.module.css";
@@ -33,7 +34,9 @@ const Ranking: React.FC<RankingProps> = ({ players, gameEnded }) => {
 
   return (
     <div className={Style.ranking}>
-      <h3 className={Style.ranking__title}>{"   "} Ranking</h3>
+      <h3 className={Style.ranking__title}> 
+      <img className={Style.ranking__logo} src={Logo.rankingLogo} alt="Ranking logo" /> 
+      Ranking</h3>
       <table className={Style.ranking__table}>
         <thead>
           <tr>
