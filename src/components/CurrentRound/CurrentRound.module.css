@@ -18,18 +18,18 @@
 }
 
 .table__row--you {
-    background-color: #bcb8b8d6;
+    background-color: #475062;
 
 }
 
 .table__row--cpu1,
 .table__row--cpu3 {
-    background-color: #888;
+    background-color: #262e39;
 }
 
 .table__row--cpu2,
 .table__row--cpu4 {
-    background-color: #666;
+    background-color: #1a222b;
 }
 
 .tableH {
@@ -39,7 +39,7 @@
 
 .table__data {
     padding: 10px;
-    border-top: 1px solid #555;
+    /* border-top: 1px solid #555; */
 }
 
 

@@ -13,7 +13,7 @@
 
 .ranking__table {
   width: 100%;
-  background-color: #393939e0;
+  background-color: #151a21;
   border-collapse: collapse;
   border-radius: 19px;
   border-spacing: 0;  
@@ -38,17 +38,17 @@
 }
 
 .table__row--you {
-  background-color: #bcb8b8d6;
+  background-color: #1a222b;
 
 }
 
 .table__row--cpu1,
 .table__row--cpu3 {
-  background-color: #888;
+  background-color: #262e39;
 }
 
 .table__row--cpu2,
 .table__row--cpu4 {
-  background-color: #666;
+  background-color: #1a222b;
   border-radius: 20px;
 }

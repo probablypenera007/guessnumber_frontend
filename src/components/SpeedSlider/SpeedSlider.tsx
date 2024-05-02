@@ -17,7 +17,7 @@ const SpeedSlider: React.FC<SpeedSliderProps> = ({ speed, setSpeed }) => {
   
   const getMarkStyle = (value: number) => {
     return {
-      color: speed >= value ? '#f00' : '#fff', 
+      color: speed >= value ? '#FF69B4' : '#fff', 
     };
   };
 
@@ -28,7 +28,7 @@ const SpeedSlider: React.FC<SpeedSliderProps> = ({ speed, setSpeed }) => {
         type="range"
         id="speed-slider"
         className={Style.speedSlider__input}
-        style={{ background: `linear-gradient(90deg, #f00 ${fillPercentage}%, #555 ${fillPercentage}%)` }}
+        style={{ background: `linear-gradient(90deg,  #FF69B4 ${fillPercentage}% , #555 ${fillPercentage}%)` }}
         min="1"
         max="5"
         value={speed}
