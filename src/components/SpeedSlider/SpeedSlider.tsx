@@ -1,4 +1,5 @@
 import React from 'react'
+import Logo from '../../images/img-index'
 
 //internal imports
 import Style from './SpeedSlider.module.css'
@@ -23,7 +24,9 @@ const SpeedSlider: React.FC<SpeedSliderProps> = ({ speed, setSpeed }) => {
 
   return (
     <div className={Style.speedSlider}>
-      <h3 className={Style.speedSlider__title} >icon Speed</h3>
+      <h3 className={Style.speedSlider__title} >
+      <img className={Style.speedLogo} src={Logo.speedLogo} alt="speed slider logo" /> 
+        Speed</h3>
       <input
         type="range"
         id="speed-slider"

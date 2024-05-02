@@ -75,3 +75,10 @@
   color: #fff;
   user-select: none; 
 }
+
+.speedLogo{
+  height: 20px;
+  width: 15px;
+  margin: 0 10px 0 0;
+  padding: 0;
+}
