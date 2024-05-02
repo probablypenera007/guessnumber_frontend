@@ -21,13 +21,20 @@ import Style from "./App.module.css";
 import GameBoard from "../GameBoard/GameBoard";
 
 
+//interface
+interface User {
+  name: string;
+  points: number;
+}
+
+
 function App() {
   const [cpuPlayers, setCpuPlayers] = useState(generateInitialCPUPlayers());
   const [gameStarted, setGameStarted] = useState(false);
   const [speed, setSpeed] = useState(1);
   const [finalMultiplier, setFinalMultiplier] = useState(0);
   const [totalPoints, setTotalPoints] = useState(1000);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] =  useState<User | null>(null);
 
   const handleStartGame = useCallback((points: number, multiplier: number) => {
     setGameStarted(true);
