@@ -56,12 +56,6 @@ function App() {
       }
     });
   
-  //   setCpuPlayers(cpuPlayers.map((player, index) => ({
-  //     ...player,
-  //     points: index === indexLoser ? 0 : player.points * multiplier
-  //   })));
-  // }, [cpuPlayers]);
-
   setCpuPlayers(cpuPlayers.map((player, index) => {
     const updatedPoints = index === indexLoser ? 0 : player.points * multiplier;
     if (player.name === "Thomas") {
@@ -73,6 +67,9 @@ function App() {
     };
   }));
 }, [cpuPlayers, updateTotalPoints]);
+
+
+
 
   return (
     <div className={Style.App}>
