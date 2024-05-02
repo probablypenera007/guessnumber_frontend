@@ -33,7 +33,7 @@ const Ranking: React.FC<RankingProps> = ({ players, gameEnded }) => {
 
   return (
     <div className={Style.ranking}>
-      <h3 className={Style.ranking__title}>Ranking</h3>
+      <h3 className={Style.ranking__title}>{"   "} Ranking</h3>
       <table className={Style.ranking__table}>
         <thead>
           <tr>
@@ -42,7 +42,7 @@ const Ranking: React.FC<RankingProps> = ({ players, gameEnded }) => {
             <th>Score</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={Style.ranking__tableBody} >
           {gameEnded ? (
             sortedPlayers.map((player, index) => (
               <tr key={player.name} className={getRowStyle(index)}>

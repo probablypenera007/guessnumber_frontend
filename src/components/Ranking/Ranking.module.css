@@ -1,44 +1,54 @@
 .ranking {
-    margin-top: 70px;
-    margin-left: 20px;
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 600px;
-  }
-  
-  .ranking__title {
-    margin-bottom: 10px;
-  }
-  
-  .ranking__table {
-    width: 100%;
-    background-color: #1e1e1e; 
-    border-collapse: collapse;
-   
-  }
-  
-  .ranking__table th,
-  .ranking__table td {
-    text-align: left;
-    padding: 8px;
-  }
-  
-  .ranking__table th {
-    /* border-bottom: 1px solid grey; */
-  }
+  margin-top: -13px;
+  margin-left: 20px;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 520px;
+}
 
-  .table__row--you {
-    background-color: #bcb8b8d6;
+.ranking__title {
+  margin-bottom: 10px;
+}
+
+.ranking__table {
+  width: 100%;
+  background-color: #393939e0;
+  border-collapse: collapse;
+  border-radius: 19px;
+  border-spacing: 0;  
+}
+
+.ranking__table th,
+.ranking__table td {
+  text-align: left;
+  padding: 8px;
+}
+
+.ranking__tableBody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px; 
+}
+
+.ranking__tableBody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px; 
+}
+
+.ranking__table th {
+  /* border-bottom: 1px solid grey; */
+}
+
+.table__row--you {
+  background-color: #bcb8b8d6;
 
 }
 
 .table__row--cpu1,
 .table__row--cpu3 {
-    background-color: #888;
+  background-color: #888;
 }
 
 .table__row--cpu2,
 .table__row--cpu4 {
-    background-color: #666;
+  background-color: #666;
+  border-radius: 20px;
 }
