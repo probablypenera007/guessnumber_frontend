@@ -1,5 +1,6 @@
 import chatLogo from './chat-logo.png';
 import pointsLogo from './points-logo.png';
+import currentRoundLogo from './currentround-logo.png';
 import rankingLogo from './ranking-logo.png';
 import speedLogo from './speed-logo.png';
 import timerLogo from './timer-logo.png';
@@ -14,4 +15,5 @@ export default {
     timerLogo,
     userActiveLogo,
     userInactiveLogo,
+    currentRoundLogo
 }

@@ -207,9 +207,9 @@
 
 
 /* LOGO */
-.points_logo{
-    height: 50px;
-    width: 50px;
-    margin: 0;
+.logo{
+    height: 20px;
+    width: 15px;
+    margin: 0 10px 0 0;
     padding: 0;
 }

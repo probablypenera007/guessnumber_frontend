@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from "../../images/img-index";
 
 //internal imports
 import Style from "./CurrentRound.module.css";
@@ -69,7 +70,9 @@ const CurrentRound: React.FC<CurrentRoundProps> = ({
 
   return (
     <div className={Style.currentRound}>
-      <h3 className={Style.currentRound__title}>icon Current Round</h3>
+      <h3 className={Style.currentRound__title}>
+      <img className={Style.currentRound__logo} src={Logo.currentRoundLogo} alt="Timer logo" /> 
+        Current Round</h3>
       <table className={Style.currentRound__table}>
         <thead className={Style.currentRound__tableHeader}>
           <tr className={Style.table__row}>

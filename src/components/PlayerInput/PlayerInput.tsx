@@ -110,10 +110,14 @@ const PlayerInput: React.FC<PlayerInputProps> = ({ onStartGame, updateTotalPoint
         {/* INFO PANEL */}
         <div className={Style.playerInput__infoPanel}>
           <div className={Style.playerInput__totalPoints}>
-          <img className={Style.points_logo} src={Logo.pointsLogo} alt="Points logo" /> {totalPoints}
+          <img className={Style.logo} src={Logo.pointsLogo} alt="Points logo" /> {totalPoints}
           </div>
-          <div className={Style.playerInput__name}>icon: {playerName}</div>
-          <div className={Style.playerInput__timer}>icon {formatTime()}</div>
+          <div className={Style.playerInput__name}>
+          <img className={Style.logo} src={Logo.userActiveLogo} alt="User Active logo" /> 
+           {playerName}</div>
+          <div className={Style.playerInput__timer}>
+          <img className={Style.logo} src={Logo.timerLogo} alt="Timer logo" /> 
+             {formatTime()}</div>
         </div>
       </div>
 
