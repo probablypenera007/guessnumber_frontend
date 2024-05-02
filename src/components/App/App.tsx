@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 // -------------------------------
 // COMPONENT IMPORTS
@@ -22,23 +22,41 @@ function App() {
   const [cpuPlayers, setCpuPlayers] = useState(generateInitialCPUPlayers());
   const [gameStarted, setGameStarted] = useState(false);
   const [speed, setSpeed] = useState(1);
+  const [finalMultiplier, setFinalMultiplier] = useState(0);
 
-  const handleStartGame =  (points: number, multiplier: number) => {
+  const handleStartGame = useCallback((points: number, multiplier: number) => {
     setGameStarted(true);
-    const updatedPlayers = startGame(cpuPlayers).map(player => ({
+    setCpuPlayers(startGame(cpuPlayers).map(player => ({
       ...player,
       points: player.name === "You" ? points : player.points,
       multiplier: player.name === "You" ? multiplier : player.multiplier
-    }));
-    setCpuPlayers(updatedPlayers);  
-  };
+    })));
+    setFinalMultiplier(0);
+  }, [cpuPlayers]);
+
+  const handleGameEnd = useCallback((multiplier: number) => {
+    setFinalMultiplier(multiplier);
+    setGameStarted(false);
+    setCpuPlayers(cpuPlayers.map(player => ({
+      ...player,
+      points: Math.abs(player.multiplier - multiplier) < 0.5 ? player.points * multiplier : 0
+    })));
+  }, [cpuPlayers]);
 
   return (
     <div className={Style.App}>
-      <PlayerInput onStartGame={handleStartGame}/>
-      <GameBoard speed={speed}/>
+      <PlayerInput 
+      onStartGame={handleStartGame}
+      />
+      <GameBoard 
+      speed={speed}
+      onGameEnd={handleGameEnd}
+      gameStarted={gameStarted}
+      />
       <CurrentRound
-        players={cpuPlayers} gameStarted={gameStarted}
+        players={cpuPlayers} 
+        gameStarted={gameStarted}
+        finalMultiplier={finalMultiplier}
       />
    
       <SpeedSlider speed={speed} setSpeed={setSpeed} />

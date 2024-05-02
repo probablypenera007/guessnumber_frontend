@@ -1,4 +1,4 @@
-.gameBoard {
+/* .gameBoard {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
@@ -15,10 +15,60 @@
     bottom: 10%;
 }
 
+.graph {
+    width: 400px;
+    height: 400px; 
+}
+
 .graph__multiplier{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     margin: 169px -152px 1px 1px;
+}
+
+.graph__line {
+    width: 100px;
+    height: 1px;
+} */
+
+.gameBoard {
+    position: absolute;
+    top: 8%;
+    left: 28%;
+    width: 656px;
+    height: 600px;
+    background-color: #555;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Ensure contents are centered */
+}
+
+.graph {
+    width: 100px; /* Full width of the gameBoard container */
+    height: 400px; /* Adjust height as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.graph__multiplier {
+    margin: 20px 0;
+    color: white;
+    font-size: 24px;
+    position: absolute;
+}
+
+.graph__line {
+    /* padding-top:20px; */
+    margin-top: 130px;
+    box-sizing: border-box;
+    display: block;
+    height: 264px;
+    width: 669px;
 }

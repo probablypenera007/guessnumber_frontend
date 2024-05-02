@@ -6,11 +6,13 @@ import Style from "./CurrentRound.module.css";
 interface CurrentRoundProps {
   players: { name: string; points: number; multiplier: number }[];
   gameStarted: boolean;
+  finalMultiplier: number;
 }
 
 const CurrentRound: React.FC<CurrentRoundProps> = ({
   players,
   gameStarted,
+  finalMultiplier
 }) => {
   const defaultPlayers = ["You", "CPU 1", "CPU 2", "CPU 3", "CPU 4"];
 
