@@ -6,6 +6,8 @@ import React, { useState, useCallback } from "react";
 import PlayerInput from "../PlayerInput/PlayerInput";
 import CurrentRound from "../CurrentRound/CurrentRound";
 import SpeedSlider from "../SpeedSlider/SpeedSlider";
+import Ranking from "../Ranking/Ranking";
+import ChatBox from "../ChatBox/ChatBox";
 
 // -------------------------------
 // CONTEXT AND UTILITY IMPORTS
@@ -23,6 +25,7 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [speed, setSpeed] = useState(1);
   const [finalMultiplier, setFinalMultiplier] = useState(0);
+  const [totalPoints, setTotalPoints] = useState(1000);
 
   const handleStartGame = useCallback((points: number, multiplier: number) => {
     setGameStarted(true);
@@ -33,6 +36,11 @@ function App() {
     })));
     setFinalMultiplier(0);
   }, [cpuPlayers]);
+
+  const updateTotalPoints = useCallback((pointsToAdd: number) => {
+    setTotalPoints((prevTotalPoints) => prevTotalPoints + pointsToAdd);
+  }, []);
+
 
   const handleGameEnd = useCallback((multiplier: number) => {
     setFinalMultiplier(multiplier);
@@ -48,16 +56,29 @@ function App() {
       }
     });
   
-    setCpuPlayers(cpuPlayers.map((player, index) => ({
+  //   setCpuPlayers(cpuPlayers.map((player, index) => ({
+  //     ...player,
+  //     points: index === indexLoser ? 0 : player.points * multiplier
+  //   })));
+  // }, [cpuPlayers]);
+
+  setCpuPlayers(cpuPlayers.map((player, index) => {
+    const updatedPoints = index === indexLoser ? 0 : player.points * multiplier;
+    if (player.name === "Thomas") { // Assuming "Thomas" is the player's name
+      updateTotalPoints(updatedPoints - player.points); // Subtract original and add new points
+    }
+    return {
       ...player,
-      points: index === indexLoser ? 0 : player.points * multiplier
-    })));
-  }, [cpuPlayers]);
+      points: updatedPoints
+    };
+  }));
+}, [cpuPlayers, updateTotalPoints]);
 
   return (
     <div className={Style.App}>
       <PlayerInput 
       onStartGame={handleStartGame}
+      updateTotalPoints={updateTotalPoints} 
       />
       <GameBoard 
       speed={speed}
@@ -71,6 +92,8 @@ function App() {
       />
    
       <SpeedSlider speed={speed} setSpeed={setSpeed} />
+      <Ranking/>
+      <ChatBox/>
     </div>
   );
 }

@@ -6,9 +6,10 @@ import Style from "./PlayerInput.module.css";
 
 interface PlayerInputProps {
   onStartGame: (points: number, multiplier: number) => void;
+  updateTotalPoints: (points: number) => void; 
 }
 
-const PlayerInput: React.FC<PlayerInputProps> = ({ onStartGame }) => {
+const PlayerInput: React.FC<PlayerInputProps> = ({ onStartGame, updateTotalPoints }) => {
   const [points, setPoints] = useState<number>(50);
   const [multiplier, setMultiplier] = useState<number>(1.0);
   const [totalPoints, setTotalPoints] = useState<number>(1000);
