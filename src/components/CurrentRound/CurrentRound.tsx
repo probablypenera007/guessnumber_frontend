@@ -16,9 +16,8 @@ const CurrentRound: React.FC<CurrentRoundProps> = ({
 }) => {
   const renderTableRows = () => {
     let maxDifference = 0;
-    let indexLoser = -1; // Initialize with -1 to indicate no loser initially
+    let indexLoser = -1; 
 
-    // Calculate who the loser is only if the game has ended
     if (!gameStarted && finalMultiplier > 0) {
       players.forEach((player, index) => {
         let difference = Math.abs(player.multiplier - finalMultiplier);
