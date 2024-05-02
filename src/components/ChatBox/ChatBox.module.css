@@ -15,7 +15,7 @@
     position: absolute;
     font-size: 20px;
     top: -19%;
-    left: 8%; 
+    left: 1%; 
 }
 
 .messages {
@@ -82,4 +82,11 @@
 .messages::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #FF416C 0%, #FF4B2B 100%);
     border-radius: 4px;
+}
+
+.chatLogo{
+    height: 20px;
+    width: 15px;
+    margin: 0 10px 0 0;
+    padding: 0;
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { cpuMessages } from '../../utils/cpuPlayers';
+import Logo from '../../images/img-index';
 
 // Internal imports
 import Style from './ChatBox.module.css';
@@ -46,7 +47,9 @@ const ChatBox: React.FC = () => {
 
   return (
     <div className={Style.chatBox}>
-      <h2 className={Style.chatBox__title}>Chat</h2>
+      <h2 className={Style.chatBox__title}>
+      <img className={Style.chatLogo} src={Logo.chatLogo} alt="chat logo" /> 
+        Chat</h2>
       <div className={Style.messages}>
         {messages.map((message, index) => (
           <div key={index} className={Style.message}>
