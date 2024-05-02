@@ -1,7 +1,12 @@
-import React from 'react'
+import { createContext } from 'react';
 
-const CurrentUserContext = React.createContext({
+interface User {
+  name: string;
+  points: number;
+}
 
-})
+type CurrentUserContextType = User | null;
 
-export default CurrentUserContext
+const CurrentUserContext = createContext<CurrentUserContextType>(null);
+
+export default CurrentUserContext;

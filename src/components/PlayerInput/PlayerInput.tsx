@@ -1,21 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 import Logo from "../../images/img-index";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 //Internal imports
 import Style from "./PlayerInput.module.css";
 
 interface PlayerInputProps {
   onStartGame: (points: number, multiplier: number) => void;
-  updateTotalPoints: (points: number) => void; 
+  updateTotalPoints: (points: number) => void;
 }
 
-const PlayerInput: React.FC<PlayerInputProps> = ({ onStartGame, updateTotalPoints }) => {
+const PlayerInput: React.FC<PlayerInputProps> = ({
+  onStartGame,
+  updateTotalPoints,
+}) => {
   const [points, setPoints] = useState<number>(50);
   const [multiplier, setMultiplier] = useState<number>(1.0);
   const [totalPoints, setTotalPoints] = useState<number>(1000);
   const [timeLeft, setTimeLeft] = useState<number>(1290); //21 minutes and 30 seconds in milliseconds
   const [playerName, setPlayerName] = useState<string>("Thomas");
+
+  const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
     const timer =
@@ -110,14 +116,25 @@ const PlayerInput: React.FC<PlayerInputProps> = ({ onStartGame, updateTotalPoint
         {/* INFO PANEL */}
         <div className={Style.playerInput__infoPanel}>
           <div className={Style.playerInput__totalPoints}>
-          <img className={Style.logo} src={Logo.pointsLogo} alt="Points logo" /> {totalPoints}
+            <img
+              className={Style.logo}
+              src={Logo.pointsLogo}
+              alt="Points logo"
+            />
+            {currentUser ? currentUser.points : "--"}
           </div>
           <div className={Style.playerInput__name}>
-          <img className={Style.logo} src={Logo.userActiveLogo} alt="User Active logo" /> 
-           {playerName}</div>
+            <img
+              className={Style.logo}
+              src={currentUser ? Logo.userActiveLogo : Logo.userInactiveLogo}
+              alt="User logo"
+            />
+            {currentUser ? currentUser.name : "Log-in to Play"}
+          </div>
           <div className={Style.playerInput__timer}>
-          <img className={Style.logo} src={Logo.timerLogo} alt="Timer logo" /> 
-             {formatTime()}</div>
+            <img className={Style.logo} src={Logo.timerLogo} alt="Timer logo" />
+            {currentUser ? formatTime() : " --:-- "}
+          </div>
         </div>
       </div>
 

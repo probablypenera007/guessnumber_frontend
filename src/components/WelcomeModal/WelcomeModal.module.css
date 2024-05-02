@@ -1,0 +1,60 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    z-index: 1001;
+  }
+
+.welcomeModal {
+  background-color: #232b38;
+  margin: -521px 990px 1px 1px;
+  color: white;
+  padding: 17px;
+  border-radius: 10px;
+  width: 301px;
+  height: 509px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .welcomeModal__title {
+    margin-bottom: 10px;
+  }
+  
+  .welcomeModal p {
+    margin-bottom: 20px;
+  }
+  
+  .welcome__input{
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #222;
+    color: white;
+  }
+  
+  .welcome__submit{
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #8790a4;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .welcome__submit:hover {
+    background-color: #777;
+  }
+  

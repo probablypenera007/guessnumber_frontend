@@ -19,6 +19,7 @@ import * as api from "../../utils/api";
 //Internal imports
 import Style from "./App.module.css";
 import GameBoard from "../GameBoard/GameBoard";
+import WelcomeModal from "../WelcomeModal/WelcomeModal";
 
 
 //interface
@@ -65,25 +66,38 @@ function App() {
       }
     });
   
-  setCpuPlayers(cpuPlayers.map((player, index) => {
-    const updatedPoints = index === indexLoser ? 0 : player.points * multiplier;
-    if (player.name === "Thomas") {
-      updateTotalPoints(updatedPoints - player.points); 
-    }
-    return {
-      ...player,
-      points: updatedPoints
-    };
-  }));
-}, [cpuPlayers, updateTotalPoints]);
+    setCpuPlayers(cpuPlayers.map((player, index) => {
+      const updatedPoints = index === indexLoser ? 0 : player.points * multiplier;
+      if (currentUser && player.name === currentUser.name) {
+        updateTotalPoints(updatedPoints - player.points); 
+      }
+      return {
+        ...player,
+        points: updatedPoints
+      };
+    }));
+  }, [cpuPlayers, updateTotalPoints, currentUser]);
+
 
 //LOGIN / Register
-
+const handleRegistration = (name: string) => {
+  api.register({ name }).then(user => {
+    setCurrentUser(user);
+    localStorage.setItem('user', JSON.stringify(user));
+    setTimeout(() => {
+      setCurrentUser(null); // Clear user data after 21 minutes and 30 seconds
+      localStorage.removeItem('user');
+    }, 1290000); // 1290000 milliseconds = 21 minutes and 30 seconds
+  }).catch(error => {
+    console.error('Registration failed:', error);
+  });
+};
 
 
   return (
     <CurrentUserContext.Provider value={currentUser}> 
     <div className={Style.App}>
+    {!currentUser && <WelcomeModal onAccept={handleRegistration} />}
       <PlayerInput 
       onStartGame={handleStartGame}
       updateTotalPoints={updateTotalPoints} 

@@ -34,7 +34,7 @@ export function getPlayers(url: string): Promise<any> {
       points: 1000 
     };
   
-    return request(`${baseUrl}/signup`, {
+    return request(`${baseUrl}/players`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

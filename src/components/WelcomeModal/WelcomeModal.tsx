@@ -1,9 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-const WelcomeModal = () => {
-  return (
-    <div>WelcomeModal</div>
-  )
+import Style from './WelcomeModal.module.css';
+interface WelcomeModalProps {
+  onAccept: (name: string) => void;
 }
 
-export default WelcomeModal
+const WelcomeModal: React.FC<WelcomeModalProps> = ({ onAccept }) => {
+  const [name, setName] = useState('');
+
+  const handleAccept = () => {
+    if (name.trim()) {
+      onAccept(name);
+    }
+  };
+
+  return (
+    <div className={Style.overlay} >
+    <div className={Style.welcomeModal}>
+      <h1 className={Style.welcomeModal__title} >Welcome</h1>
+      <p>Please Insert Your Name</p>
+      <input
+      className={Style.welcome__input}
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Your Name"
+      />
+      <button className={Style.welcome__submit}  onClick={handleAccept}>Accept</button>
+    </div>
+    </div>
+  );
+};
+
+export default WelcomeModal;
