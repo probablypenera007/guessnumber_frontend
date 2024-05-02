@@ -12,40 +12,61 @@ interface CurrentRoundProps {
 const CurrentRound: React.FC<CurrentRoundProps> = ({
   players,
   gameStarted,
-  finalMultiplier
+  finalMultiplier,
 }) => {
-  const defaultPlayers = ["You", "CPU 1", "CPU 2", "CPU 3", "CPU 4"];
-
   const renderTableRows = () => {
-    const playerData = gameStarted ? players : defaultPlayers.map(player => ({ name: player, points: '-', multiplier: '-' }));
+    let maxDifference = 0;
+    let indexLoser = -1; // Initialize with -1 to indicate no loser initially
 
-    return playerData.map((player, index) => {
-      let rowStyle: string = '';
+    // Calculate who the loser is only if the game has ended
+    if (!gameStarted && finalMultiplier > 0) {
+      players.forEach((player, index) => {
+        let difference = Math.abs(player.multiplier - finalMultiplier);
+        if (difference > maxDifference) {
+          maxDifference = difference;
+          indexLoser = index;
+        }
+      });
+    }
+
+    return players.map((player, index) => {
+      let baseRowStyle: string = "";
       switch (index) {
         case 0:
-          rowStyle = Style["table__row--you"] as string;
+          baseRowStyle = Style["table__row--you"];
           break;
         case 1:
         case 3:
-          rowStyle = Style["table__row--cpu1"] as string;
+          baseRowStyle = Style["table__row--cpu1"];
           break;
         case 2:
         case 4:
-          rowStyle = Style["table__row--cpu2"] as string;
+          baseRowStyle = Style["table__row--cpu2"];
           break;
         default:
           break;
       }
 
-    return (
-      <tr key={player.name} className={rowStyle}>
-        <td className={Style.table__data}>{player.name}</td>
-        <td className={Style.table__data}>{typeof player.points === 'number' ? player.points : '-'}</td>
-        <td className={Style.table__data}>{typeof player.multiplier === 'number' ? player.multiplier : '-'}</td>
-      </tr>
-    );
-  });
-};
+      let resultStyle = "";
+      if (!gameStarted && finalMultiplier > 0) {
+        resultStyle = (index === indexLoser) ? Style["table__row--loser"] : Style["table__row--winner"];
+      }
+
+      const pointsDisplay = (gameStarted || finalMultiplier > 0) 
+      ? parseFloat(player.points.toFixed(2)) 
+      : "-";      const multiplierDisplay = (gameStarted || finalMultiplier > 0) ? player.multiplier.toFixed(2) : "-";
+
+      const rowStyle = resultStyle ? `${baseRowStyle} ${resultStyle}` : baseRowStyle;
+
+      return (
+        <tr key={player.name} className={rowStyle}>
+          <td className={Style.table__data}>{player.name}</td>
+          <td className={Style.table__data}>{pointsDisplay}</td>
+          <td className={Style.table__data}>{multiplierDisplay}</td>
+        </tr>
+      );
+    });
+  };
 
   return (
     <div className={Style.currentRound}>

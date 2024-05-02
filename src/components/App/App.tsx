@@ -37,9 +37,20 @@ function App() {
   const handleGameEnd = useCallback((multiplier: number) => {
     setFinalMultiplier(multiplier);
     setGameStarted(false);
-    setCpuPlayers(cpuPlayers.map(player => ({
+    let maxDifference = 0;
+    let indexLoser = -1;
+  
+    cpuPlayers.forEach((player, index) => {
+      let difference = Math.abs(player.multiplier - multiplier);
+      if (difference > maxDifference) {
+        maxDifference = difference;
+        indexLoser = index;
+      }
+    });
+  
+    setCpuPlayers(cpuPlayers.map((player, index) => ({
       ...player,
-      points: Math.abs(player.multiplier - multiplier) < 0.5 ? player.points * multiplier : 0
+      points: index === indexLoser ? 0 : player.points * multiplier
     })));
   }, [cpuPlayers]);
 
