@@ -14,6 +14,7 @@ import ChatBox from "../ChatBox/ChatBox";
 // -------------------------------
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { generateInitialCPUPlayers, startGame } from "../../utils/cpuPlayers";
+import * as api from "../../utils/api";
 
 //Internal imports
 import Style from "./App.module.css";
