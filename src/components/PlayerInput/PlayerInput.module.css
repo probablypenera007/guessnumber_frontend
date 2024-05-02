@@ -30,7 +30,7 @@
     justify-content: center;
     margin-top: 20px;
     border-radius: 10px;
-    background-color: blue;
+    background-color: linear-gradient(180deg, #2B2B2B 0%, #1E1E1E 100%);
     padding: 20px 3px 3px 5px;
     align-items: center;
 }
@@ -84,7 +84,7 @@
     justify-content: center;
     margin-top: 20px;
     border-radius: 10px;
-    background-color: blue;
+    background-color: linear-gradient(180deg, #2B2B2B 0%, #1E1E1E 100%);
     padding: 20px 3px 3px 5px;
     align-items: center;
     margin-left: -35px;

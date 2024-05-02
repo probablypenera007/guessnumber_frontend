@@ -32,7 +32,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #f00; 
+    background: linear-gradient(180deg, #FF416C 0%, #FF4B2B 100%); 
     cursor: pointer;
     margin-top: -6px;
     box-shadow: 0 0 0 3px #fff;
@@ -42,7 +42,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #f00;
+    background: linear-gradient(180deg, #FF416C 0%, #FF4B2B 100%);
     cursor: pointer;
     margin-top: -6px;
     box-shadow: 0 0 0 3px #fff; 
