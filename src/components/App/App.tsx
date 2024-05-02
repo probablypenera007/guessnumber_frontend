@@ -12,7 +12,7 @@ import ChatBox from "../ChatBox/ChatBox";
 // -------------------------------
 // CONTEXT AND UTILITY IMPORTS
 // -------------------------------
-//note: will use useContext for currentUser
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { generateInitialCPUPlayers, startGame } from "../../utils/cpuPlayers";
 
 //Internal imports
@@ -72,6 +72,7 @@ function App() {
 
 
   return (
+    <CurrentUserContext.Provider value={currentUser}> 
     <div className={Style.App}>
       <PlayerInput 
       onStartGame={handleStartGame}
@@ -95,6 +96,7 @@ function App() {
       />
       <ChatBox/>
     </div>
+    </CurrentUserContext.Provider>
   );
 }
 
