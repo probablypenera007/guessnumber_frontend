@@ -6,7 +6,9 @@ import {
   CategoryScale, // x axis
   LinearScale, // y axis
   PointElement,
+  ChartOptions,
 } from "chart.js";
+// import { ChartOptions } from 'chart.js';
 
 //internal imports
 import Style from "./GameBoard.module.css";
@@ -18,7 +20,7 @@ interface GameBoardProps {
 }
 
 // Chart Registration
-ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale);
+ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale,);
 
 
 const GameBoard: React.FC<GameBoardProps> = ({ speed, onGameEnd, gameStarted }) => {
@@ -62,7 +64,9 @@ const GameBoard: React.FC<GameBoardProps> = ({ speed, onGameEnd, gameStarted }) 
       label: 'Multiplier Progress',
       // data: Array.from({ length: Math.floor(multiplier * 10) + 1 }, (_, i) => (i / 10).toFixed(1)),
       // data: Array.from({ length: 11 }, (_, i) => multiplier <= i ? null : multiplier),
-      data: Array.from({ length: 11 }, (_, i) => (i <= Math.floor(multiplier)) ? multiplier : null),
+      // data: Array.from({ length: 11 }, (_, i) => (i <= Math.floor(multiplier)) ? multiplier : null),
+      data: Array.from({ length: 11 }, (_, i) => (i / 10) <= multiplier ? parseFloat((multiplier * (i / 10)).toFixed(2)) : 0),
+
       borderColor: "rgb(255, 99, 132)",
       backgroundColor: "rgba(255, 99, 132, 0.5)",
     }]
@@ -78,6 +82,8 @@ const GameBoard: React.FC<GameBoardProps> = ({ speed, onGameEnd, gameStarted }) 
         //   display: true,
         //   // text: 'Time'
         // }
+        suggestedMin: 0,
+        suggestedMax: targetMultiplier,
       },
       y: {
         display: true,
@@ -104,8 +110,6 @@ const GameBoard: React.FC<GameBoardProps> = ({ speed, onGameEnd, gameStarted }) 
     },
     maintainAspectRatio: false,
   };
-
-
 
 
   return (
