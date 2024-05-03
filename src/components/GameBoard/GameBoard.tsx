@@ -21,21 +21,21 @@ const GameBoard: React.FC<GameBoardProps> = ({ speed, onGameEnd, gameStarted }) 
     if (gameStarted) {
       if (pathRef.current && ballRef.current) {
         gsap.set(ballRef.current, {
-          scale: 0.5, 
+          scale: 2, 
           autoAlpha: 1
         });
 
        
         gsap.to(ballRef.current, {
-          duration: speed,
-          ease: "power2.in",
+          duration: 10,
+          ease: "none",
           motionPath: {
             path: "M-12.733,158.807 C-9.231,157.152 44.578,160.773 117.63,159.779 192.621,159.779 232.53,162.598 257.093,157.942 300.719,149.671 282.615,155.891 329.89,143.813 414.182,122.277 463.665,27.389 470.665,4.394",
             align: pathRef.current,
-            alignOrigin: [0.5, 0.5],
+            alignOrigin: [-12.50, 0.50],
             autoRotate: 90
           },
-          y: -500, 
+          y: -800, 
           onUpdate: () => {
             const progress = gsap.getProperty(ballRef.current, "motionPath");
             const currentProgress = progress as number; 
@@ -50,12 +50,13 @@ const GameBoard: React.FC<GameBoardProps> = ({ speed, onGameEnd, gameStarted }) 
   return (
     <div className={Style.gameBoard}>
       <h1 className={Style.graph__multiplier}>{currentMultiplier.toFixed(2)}x</h1>
-      <svg width="80%" height="200" viewBox="0 0 80 -80" ref={pathRef}>
+      <svg width="650" height="180" viewBox="0 0 550 200" ref={pathRef}>
         <path
           d="M-12.733,158.807 C-9.231,157.152 44.578,160.773 117.63,159.779 192.621,159.779 232.53,162.598 257.093,157.942 300.719,149.671 282.615,155.891 329.89,143.813 414.182,122.277 463.665,27.389 470.665,4.394"
           fill="transparent"
           stroke="rgb(255, 99, 132)"
-          strokeWidth="5"
+          
+          strokeWidth="3"
         />
         <circle ref={ballRef} r="3" fill="yellow" />
       </svg>
