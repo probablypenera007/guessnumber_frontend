@@ -9,11 +9,13 @@ import Style from "./PlayerInput.module.css";
 interface PlayerInputProps {
   onStartGame: (points: number, multiplier: number) => void;
   updateTotalPoints: (points: number) => void;
+  gameEnded: boolean;
 }
 
 const PlayerInput: React.FC<PlayerInputProps> = ({
   onStartGame,
   updateTotalPoints,
+  gameEnded
 }) => {
   const [points, setPoints] = useState<number>(50);
   const [multiplier, setMultiplier] = useState<number>(1.0);
@@ -24,19 +26,32 @@ const PlayerInput: React.FC<PlayerInputProps> = ({
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
-    const timer =
-      timeLeft > 0 &&
-      setInterval(() => {
-        setTimeLeft(timeLeft - 1);
-      }, 1000);
-    return () => clearInterval(timer as NodeJS.Timeout);
-  }, [timeLeft]);
+    console.log("Effect run", { gameEnded, currentUser, multiplier });
+    if (gameEnded && currentUser && currentUser.points > 0) {
+      const updatedPoints = Math.floor(currentUser.points * multiplier);
+      if (currentUser.points !== updatedPoints) {
+        updateTotalPoints(updatedPoints - currentUser.points);
+      }
+    }
+  }, [gameEnded, currentUser, multiplier, updateTotalPoints]);
+
+
+useEffect(() => {
+  if (currentUser && timeLeft > 0) {
+    const timer = setInterval(() => {
+      setTimeLeft((prevTime) => prevTime - 1);
+    }, 1000)
+    return () => clearInterval(timer)
+  }
+}, [currentUser, timeLeft])
 
   const handlePointsChange = (increment: boolean) => {
-    if (increment && totalPoints >= points + 10) {
+    if (increment) {
       setPoints((prev) => prev + 10);
+      updateTotalPoints(-10);
     } else if (!increment && points > 0) {
       setPoints((prev) => Math.max(0, prev - 10));
+      updateTotalPoints(10);
     }
   };
 
@@ -50,8 +65,8 @@ const PlayerInput: React.FC<PlayerInputProps> = ({
   };
 
   const handleSubmit = () => {
-    if (totalPoints >= points) {
-      setTotalPoints((prev) => prev - points);
+    if (currentUser && currentUser.points >= points) { 
+      updateTotalPoints(-points); 
       onStartGame(points, multiplier);
     } else {
       alert("Not enough points");
@@ -77,7 +92,7 @@ const PlayerInput: React.FC<PlayerInputProps> = ({
           <p className={Style.playerInput__point_text}>Points</p>
           <input
             type="number"
-            value={points}
+            value={points} 
             className={Style.playerInput__points_input}
             readOnly
           />

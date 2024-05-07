@@ -44,17 +44,25 @@
     color: white;
   }
   
-  .welcome__submit{
+   .welcome__submit {
     width: 80%;
     padding: 10px;
+    margin-top: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: #8790a4;
     color: white;
-    cursor: pointer;
+    cursor: not-allowed; 
+    transition: background-color 0.3s;
+    font-size: 15px 
   }
   
-  .welcome__submit:hover {
-    background-color: #777;
+  .welcome__submit.active {
+    background: linear-gradient(180deg, #FF416C 0%, #FF4B2B 100%);
+    cursor: pointer; 
+  }
+  
+  .welcome__submit:hover:enabled {
+    background: linear-gradient(180deg, #e55c7c 0%, #FF4B2B 100%);
   }
   

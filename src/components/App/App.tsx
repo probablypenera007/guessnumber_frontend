@@ -49,7 +49,13 @@ function App() {
 
   const updateTotalPoints = useCallback((pointsToAdd: number) => {
     setTotalPoints((prevTotalPoints) => prevTotalPoints + pointsToAdd);
-  }, []);
+    setCurrentUser((prevUser) => {
+      if (prevUser) {
+        return { ...prevUser, points: prevUser.points + pointsToAdd };
+      }
+      return prevUser;
+    });
+  }, [setCurrentUser]);
 
 
   const handleGameEnd = useCallback((multiplier: number) => {
@@ -65,12 +71,17 @@ function App() {
         indexLoser = index;
       }
     });
-  
-    setCpuPlayers(cpuPlayers.map((player, index) => {
-      const updatedPoints = index === indexLoser ? 0 : player.points * multiplier;
-      if (currentUser && player.name === currentUser.name) {
-        updateTotalPoints(updatedPoints - player.points); 
-      }
+    
+     // Update points for all players
+  setCpuPlayers(cpuPlayers.map((player, index) => {
+    const isLoser = index === indexLoser;
+    const updatedPoints = isLoser ? 0 : player.points * multiplier;
+
+    if (currentUser && player.name === currentUser.name) {
+      const pointsChange = multiplier > 0 ? (updatedPoints - player.points) : 0;
+      updateTotalPoints(pointsChange);
+    }
+
       return {
         ...player,
         points: updatedPoints
@@ -101,6 +112,7 @@ const handleRegistration = (name: string) => {
       <PlayerInput 
       onStartGame={handleStartGame}
       updateTotalPoints={updateTotalPoints} 
+      gameEnded={finalMultiplier > 0}
       />
       <GameBoard 
       speed={speed}

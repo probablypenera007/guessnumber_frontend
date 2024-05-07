@@ -33,7 +33,14 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ onAccept }) => {
         onChange={(e) => setName(e.target.value)}
         placeholder="Your Name"
       />
-      <button className={Style.welcome__submit}  onClick={handleAccept}>Accept</button>
+      {/* <button className={Style.welcome__submit}  onClick={handleAccept}>Accept</button> */}
+      <button
+          className={`${Style.welcome__submit} ${name.trim() ? Style.active : ''}`}
+          onClick={handleAccept}
+          disabled={!name.trim()} 
+        >
+          Accept
+        </button>
     </div>
     </div>
   );
